@@ -1,0 +1,29 @@
+Grupo 2: Ruiz Camila y Villalba Joaquín.
+
+1. Memory Management Unit (MMU):
+Tiene una memoria a la cual accede para pedir los datos de los procesos definida por 
+“memory” que se setea a la hora de inicializarla. Define la dirección base y el limite de la memoria, 
+sirve para acceder a las intrucciones del programa en memoria mediante la dirección lógica y dirección
+de memoria física.
+
+
+2. IoDeviceController: 
+Maneja el dispositvo y la cola del mismo. Recibe el dispositivo "device" del cual se encarga el controlador.
+
+PrinterIODevice:
+Es una subclase de la clase abstractIODevice, cuya Id es "Printer" y tiempo de ejecución es de 3.
+Se inicializa con el estado busy en False. Responde los mismos mensajes que su superclase.
+
+
+class PrinterIODevice(AbstractIODevice):
+    def _init_(self):
+        super(PrinterIODevice, self)._init_("Printer", 3)
+		
+3. Explicar cómo se llegan a ejecutar IoInInterruptionHandler.execute() 
+y  IoOutInterruptionHandler.execute()
+
+IoInInterruptionHandler.execute(): la cpu manda un execute para consultar tipo de interrupción,
+para ver si es de Io. y que el interruptVector la handlee.
+
+IoOutInterruptionHandler.execute(): cuando un dispositivo termina de ejecutar una instrucción de IO, envía un IRQ de tipo IoOut 
+para que lo handlee el interruptVector, va a devolver el handler que corresponde al tipo de interrupción IoOut.
